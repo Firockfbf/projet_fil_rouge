@@ -1,21 +1,37 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// web/src/pages/Home.jsx
+import React from "react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col md:flex-row items-center max-w-6xl mx-auto">
-      <div className="md:w-1/2 p-6">
-        <h1 className="text-5xl font-bold mb-4">Bienvenue sur Mon SaaS</h1>
-        <p className="mb-6 text-gray-700">
-          Gérez vos abonnements à des services cloud, email, analytics et plus.
+    <div className="flex flex-col md:flex-row items-center justify-between px-6 py-12 bg-gray-50">
+      {/* Texte du Hero */}
+      <div className="md:w-1/2 mb-8 md:mb-0">
+        <h1 className="text-4xl font-extrabold mb-4">
+          Bienvenue sur SaaSify
+        </h1>
+        <p className="text-lg text-gray-700 mb-6">
+          Découvrez, abonnez-vous et gérez vos services SaaS en un seul endroit.
         </p>
-        <div className="space-x-4">
-          <Link to="/products" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Services</Link>
-          <Link to="/register" className="px-6 py-3 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200">Inscription</Link>
-        </div>
+        <a
+          href="/products"
+          className="inline-block bg-blue-600 text-white px-5 py-3 rounded-lg shadow hover:bg-blue-700 transition"
+        >
+          Voir les services
+        </a>
       </div>
+
+      {/* Image du Hero */}
       <div className="md:w-1/2">
-        <img src="https://via.placeholder.com/600x400" alt="Hero" className="rounded-lg"/>
+        {/* Placez votre image hero.png dans public/images/hero.png */}
+        <img
+          src="/images/hero.png"
+          alt="Illustration SaaS"
+          className="w-full h-auto rounded-lg shadow-lg"
+          onError={(e) => {
+            // fallback si l'image n'est pas trouvée
+            e.currentTarget.src = "/images/hero-fallback.png";
+          }}
+        />
       </div>
     </div>
   );
